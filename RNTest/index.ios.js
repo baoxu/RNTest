@@ -27,25 +27,28 @@ export default class RNTest extends Component {
       //     Press Cmd+R to reload,{'\n'}
       //     Cmd+D or shake for dev menu
       //   </Text>
+
+      /* 1.hello world*/
       //   <Text>
       //     Hello word!{'\n'}
       //     123
       //   </Text>
       // </View>
 
+      /* 2.props*/
     // let pic = {
     //   uri: 'https://mobike.com/cn/logo.png'
     // };
     // return (
     //   <Image source={pic} style={{width: 376, height: 160}} />
     // );
-
       // <View style={{alignItems: 'center'}}>
       //   <Greeting name='Rexxar' />
       //   <Greeting name='Jaina' />
       //   <Greeting name='Valeera' />
       // </View>
 
+      /* 3.state*/
       // <View>
       //   <Blink text='I love to blink' />
       //   <Blink text='Yes blinking is so great' />
@@ -53,11 +56,30 @@ export default class RNTest extends Component {
       //   <Blink text='纵情向团' />
       // </View>
 
-      <View>
-        <Text style={styles.red}>just red</Text>
-        <Text style={styles.bigblue}>just bigblue</Text>
-        <Text style={[styles.bigblue, styles.red]}>bigblue, then red</Text>
-        <Text style={[styles.red, styles.bigblue]}>red, then bigblue</Text>
+      /* 4.style*/
+      // <View>
+      //   <Text style={styles.red}>just red</Text>
+      //   <Text style={styles.bigblue}>just bigblue</Text>
+      //   <Text style={[styles.bigblue, styles.red]}>bigblue, then red</Text>
+      //   <Text style={[styles.red, styles.bigblue]}>red, then bigblue</Text>
+      // </View>
+
+      /* 5.width，height*/
+      // React Native 中的尺寸都是无单位的，表示的是与设备像素密度无关的逻辑像素点。
+      // <View>
+      //   <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
+      //   <View style={{width: 100, height: 100, backgroundColor: 'skyblue'}} />
+      //   <View style={{width: 150, height: 150, backgroundColor: 'steelblue'}} />
+      // </View>
+      /*
+      // 试试去掉父View中的`flex: 1`。
+      // 则父View不再具有尺寸，因此子组件也无法再撑开。
+      // 然后再用`height: 300`来代替父View的`flex: 1`试试看？
+      */
+      <View style={{height:300}}>
+        <View style={{flex:1, backgroundColor: 'powderblue'}} />
+        <View style={{flex:2, backgroundColor: 'skyblue'}} />
+        <View style={{flex:3, backgroundColor: 'steelblue'}} />
       </View>
 
     );
