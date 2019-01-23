@@ -15,7 +15,7 @@ import {
 
 export default class RNTest extends Component {
   render() {
-    // return (
+    return (
       // <View style={styles.container}>
       //   <Text style={styles.welcome}>
       //     Welcome to React Native!
@@ -33,17 +33,32 @@ export default class RNTest extends Component {
       //   </Text>
       // </View>
 
-    let pic = {
-      uri: 'https://mobike.com/cn/logo.png'
-    };
-    return (
-      <Image source={pic} style={{width: 376, height: 160}} />
-    );
-
+    // let pic = {
+    //   uri: 'https://mobike.com/cn/logo.png'
+    // };
+    // return (
+    //   <Image source={pic} style={{width: 376, height: 160}} />
     // );
+
+      <View style={{alignItems: 'center'}}>
+        <Greeting name='Rexxar' />
+        <Greeting name='Jaina' />
+        <Greeting name='Valeera' />
+      </View>
+
+    );
   }
 }
 
+class Greeting extends Component {
+  render() {
+    return (
+      <View style={{alignItems: 'center'}}>
+        <Text>Hello {this.props.name}!</Text>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
