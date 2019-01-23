@@ -9,7 +9,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 
 export default class RNTest extends Component {
@@ -26,10 +27,15 @@ export default class RNTest extends Component {
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
         </Text>
+        <Text>
+          Hello word!{'\n'}
+          123
+        </Text>
       </View>
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
