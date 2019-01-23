@@ -10,10 +10,16 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  TextInput
 } from 'react-native';
 
 export default class RNTest extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
+
   render() {
     return (
       // <View style={styles.container}>
@@ -109,19 +115,32 @@ export default class RNTest extends Component {
       // 尝试把`alignItems`改为`flex-start`看看
       // 尝试把`justifyContent`改为`flex-end`看看
       // 尝试把`flexDirection`改为`row`看看
-      <View style={{
-        flex: 1,
-        // 主轴
-        flexDirection: 'column',
-        // 主轴排版
-        justifyContent: 'flex-end',
-        // 次轴排版
-        alignItems: 'stretch',
-      }}>
-        <View style={{height: 50, backgroundColor: 'powderblue'}} />
-        <View style={{height: 50,  backgroundColor: 'skyblue'}} />
-        <View style={{height: 100,width:100,  backgroundColor: 'steelblue'}} />
+      // <View style={{
+      //   flex: 1,
+      //   // 主轴
+      //   flexDirection: 'column',
+      //   // 主轴排版
+      //   justifyContent: 'flex-end',
+      //   // 次轴排版
+      //   alignItems: 'stretch',
+      // }}>
+      //   <View style={{height: 50, backgroundColor: 'powderblue'}} />
+      //   <View style={{height: 50,  backgroundColor: 'skyblue'}} />
+      //   <View style={{height: 100,width:100,  backgroundColor: 'steelblue'}} />
+      // </View>
+/* 8.处理文本输入*/
+      <View style={{padding: 10}}>
+        <TextInput
+          style={{height:40}}
+          placeholder='Tpye here to translate!'
+          onChangeText={(text)=>this.setState({text})}
+        />
+
+        <Text style={{padding:10,fontSize:42}}>
+          {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
+        </Text>
       </View>
+
     );
   }
 }
