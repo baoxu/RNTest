@@ -15,24 +15,32 @@ import {
 
 export default class RNTest extends Component {
   render() {
+    // return (
+      // <View style={styles.container}>
+      //   <Text style={styles.welcome}>
+      //     Welcome to React Native!
+      //   </Text>
+      //   <Text style={styles.instructions}>
+      //     To get started, edit index.ios.js
+      //   </Text>
+      //   <Text style={styles.instructions}>
+      //     Press Cmd+R to reload,{'\n'}
+      //     Cmd+D or shake for dev menu
+      //   </Text>
+      //   <Text>
+      //     Hello word!{'\n'}
+      //     123
+      //   </Text>
+      // </View>
+
+    let pic = {
+      uri: 'https://mobike.com/cn/logo.png'
+    };
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-        <Text>
-          Hello word!{'\n'}
-          123
-        </Text>
-      </View>
+      <Image source={pic} style={{width: 376, height: 160}} />
     );
+
+    // );
   }
 }
 
