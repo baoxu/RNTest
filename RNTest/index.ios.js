@@ -40,15 +40,48 @@ export default class RNTest extends Component {
     //   <Image source={pic} style={{width: 376, height: 160}} />
     // );
 
-      <View style={{alignItems: 'center'}}>
-        <Greeting name='Rexxar' />
-        <Greeting name='Jaina' />
-        <Greeting name='Valeera' />
+      // <View style={{alignItems: 'center'}}>
+      //   <Greeting name='Rexxar' />
+      //   <Greeting name='Jaina' />
+      //   <Greeting name='Valeera' />
+      // </View>
+
+      <View>
+        <Blink text='I love to blink' />
+        <Blink text='Yes blinking is so great' />
+        <Blink text='既往不拜' />
+        <Blink text='纵情向团' />
       </View>
 
     );
   }
 }
+
+class Blink extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { isShowingText: true };
+
+    // 每1000毫秒对showText状态做一次取反操作
+    setInterval(() => {
+      this.setState(previousState => {
+        return { isShowingText: !previousState.isShowingText };
+      });
+    }, 1000);
+  }
+
+  render() {
+    // 根据当前showText的值决定是否显示text内容
+    if (!this.state.isShowingText) {
+      return null;
+    }
+
+    return (
+      <Text>{this.props.text}</Text>
+    );
+  }
+}
+
 
 class Greeting extends Component {
   render() {
