@@ -16,7 +16,8 @@ import {
     Alert,
     ScrollView,
     FlatList,
-    SectionList
+    SectionList,
+    ActivityIndicator
 } from 'react-native';
 
 export default class RNTest extends Component {
@@ -25,11 +26,90 @@ export default class RNTest extends Component {
   //   this.state = {text: ''};
   // }
 
-  _onPressButton() {
-    Alert.alert('You tapped the button!')
+  // _onPressButton() {
+  //   Alert.alert('You tapped the button!')
+  // }
+
+  constructor(props){
+    super(props);
+    this.state ={ isLoading: true}
+  }
+
+  componentDidMount(){
+    return fetch('https://facebook.github.io/react-native/movies.json')
+      .then((response) => response.json())
+      .then((responseJson) => {
+
+        this.setState({
+          isLoading: false,
+          dataSource: responseJson.movies,
+        }, function(){
+
+        });
+
+      })
+      .catch((error) =>{
+        console.error(error);
+      });
+
+      // 使用其他的网络库
+      // var request = new XMLHttpRequest();
+      // request.onreadystatechange = e => {
+      //   if (request.readyState !== 4) {
+      //     return;
+      //   }
+
+      //   if (request.status === 200) {
+      //     console.log("success", request.responseText);
+
+      //     this.setState({
+      //       isLoading: false,
+      //       dataSource: responseJson.movies,
+      //     }, function(){
+
+      //     });
+      //   } else {
+      //     console.warn("error");
+                 
+      //     console.error("error");
+      //   }
+      // };
+
+      // request.open("GET", "https://mywebsite.com/endpoint/");
+      // request.send();
+      
+      // WebSocket 支持
+      // var ws = new WebSocket("ws://host.com/path");
+
+      // ws.onopen = () => {
+      //   // connection opened
+      //   ws.send("something"); // send a message
+      // };
+
+      // ws.onmessage = e => {
+      //   // a message was received
+      //   console.log(e.data);
+      // };
+
+      // ws.onerror = e => {
+      //   // an error occurred
+      //   console.log(e.message);
+      // };
+
+      // ws.onclose = e => {
+      //   // connection closed
+      //   console.log(e.code, e.reason);
+      // };
   }
 
   render() {
+    if(this.state.isLoading){
+      return(
+        <View style={{flex: 1, padding: 20}}>
+          <ActivityIndicator/>
+        </View>
+      )
+    }
     return (
       // <View style={styles.container}>
       //   <Text style={styles.welcome}>
@@ -235,15 +315,44 @@ export default class RNTest extends Component {
       //   />
       // </View>
 
-      <View style={styles.container}>
-        <SectionList
-          sections={[
-            {title: 'D', data: ['Devin']},
-            {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
-          ]}
-          renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
-          renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
-          keyExtractor={(item, index) => index}
+      // <View style={styles.container}>
+      //   <SectionList
+      //     sections={[
+      //       {title: 'D', data: ['Devin']},
+      //       {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
+      //     ]}
+      //     renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
+      //     renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+      //     keyExtractor={(item, index) => index}
+      //   />
+      // </View>
+
+/* 12.网络*/
+      // fetch("https://mywebsite.com/mydata.json");
+      // fetch("https://mywebsite.com/endpoint/", {
+      //   method: "POST",
+      //   headers: {
+      //     Accept: "application/json",
+      //     "Content-Type": "application/json"
+      //   },
+      //   body: JSON.stringify({
+      //     firstParam: "yourValue",
+      //     secondParam: "yourOtherValue"
+      //   })
+      // });
+      // fetch("https://mywebsite.com/endpoint/", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded"
+      //   },
+      //   body: "key1=value1&key2=value2"
+      // });
+
+      <View style={{flex: 1, paddingTop:20}}>
+        <FlatList
+          data={this.state.dataSource}
+          renderItem={({item}) => <Text>{item.title}, {item.releaseYear}</Text>}
+          keyExtractor={(item, index) => item.id}
         />
       </View>
 
