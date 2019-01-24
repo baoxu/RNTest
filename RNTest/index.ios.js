@@ -11,13 +11,19 @@ import {
   Text,
   View,
   Image,
-  TextInput
+  TextInput,
+  Button,
+  Alert
 } from 'react-native';
 
 export default class RNTest extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {text: ''};
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {text: ''};
+  // }
+
+  _onPressButton() {
+    Alert.alert('You tapped the button!')
   }
 
   render() {
@@ -129,16 +135,51 @@ export default class RNTest extends Component {
       //   <View style={{height: 100,width:100,  backgroundColor: 'steelblue'}} />
       // </View>
 /* 8.处理文本输入*/
-      <View style={{padding: 10}}>
-        <TextInput
-          style={{height:40}}
-          placeholder='Tpye here to translate!'
-          onChangeText={(text)=>this.setState({text})}
-        />
+      // <View style={{padding: 10}}>
+      //   <TextInput
+      //     style={{height:40}}
+      //     placeholder='Tpye here to translate!'
+      //     onChangeText={(text)=>this.setState({text})} />
+        
 
-        <Text style={{padding:10,fontSize:42}}>
-          {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
-        </Text>
+      //   <Text style={{padding:10,fontSize:42}}>
+      //     {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
+      //   </Text>
+      // </View>
+/* 9.处理触摸事件*/
+    // <View>
+    //   <Button
+    //     onPress={() => {
+    //       Alert.alert("你点击了按钮！");
+    //     }}
+    //     title="点我！"
+    //   />
+    // </View>
+    <View style={styles.container}>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this._onPressButton}
+            title="Press Me"
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this._onPressButton}
+            title="Press Me"
+            color="#841584"
+          />
+        </View>
+        <View style={styles.alternativeLayoutButtonContainer}>
+          <Button
+            onPress={this._onPressButton}
+            title="This looks great!"
+          />
+          <Button
+            onPress={this._onPressButton}
+            title="OK!"
+            color="#841584"
+          />
+        </View>
       </View>
 
     );
@@ -206,6 +247,20 @@ const styles = StyleSheet.create({
   red: {
     color: 'red',
   },
+
+  container: {
+   flex: 1,
+   justifyContent: 'center',
+  },
+  buttonContainer: {
+    margin: 20
+  },
+  alternativeLayoutButtonContainer: {
+    margin: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  }
+
 });
 
 AppRegistry.registerComponent('RNTest', () => RNTest);
