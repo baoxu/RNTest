@@ -6,15 +6,17 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TextInput,
-  Button,
-  Alert,
-    ScrollView
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    TextInput,
+    Button,
+    Alert,
+    ScrollView,
+    FlatList,
+    SectionList
 } from 'react-native';
 
 export default class RNTest extends Component {
@@ -183,39 +185,67 @@ export default class RNTest extends Component {
     //     </View>
     //   </View>
 /* 10.使用滚动视图*/
-      <ScrollView>
-          <Text style={{fontSize:96}}>Scroll me plz</Text>
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Text style={{fontSize:96}}>If you like</Text>
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Text style={{fontSize:96}}>Scrolling down</Text>
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Text style={{fontSize:96}}>What's the best</Text>
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Text style={{fontSize:96}}>Framework around?</Text>
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
-          <Text style={{fontSize:80}}>React Native</Text>
-      </ScrollView>
+      // <ScrollView>
+      //     <Text style={{fontSize:96}}>Scroll me plz</Text>
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Text style={{fontSize:96}}>If you like</Text>
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Text style={{fontSize:96}}>Scrolling down</Text>
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Text style={{fontSize:96}}>What's the best</Text>
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Text style={{fontSize:96}}>Framework around?</Text>
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+      //     <Text style={{fontSize:80}}>React Native</Text>
+      // </ScrollView>
+/* 11.使用长列表*/
+      // <View style={styles.container}>
+      //   <FlatList
+      //     data={[
+      //       {key: 'Devin'},
+      //       {key: 'Jackson'},
+      //       {key: 'James'},
+      //       {key: 'Joel'},
+      //       {key: 'John'},
+      //       {key: 'Jillian'},
+      //       {key: 'Jimmy'},
+      //       {key: 'Julie'},
+      //     ]}
+      //     renderItem = {({item}) => <Text style={styles.item}>{item.key}</Text>}
+      //   />
+      // </View>
+
+      <View style={styles.container}>
+        <SectionList
+          sections={[
+            {title: 'D', data: ['Devin']},
+            {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
+          ]}
+          renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
+          renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+          keyExtractor={(item, index) => index}
+        />
+      </View>
 
     );
   }
@@ -274,28 +304,45 @@ const styles = StyleSheet.create({
   //   color: '#333333',
   //   marginBottom: 5,
   // },
-  bigblue: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 30,
-  },
-  red: {
-    color: 'red',
-  },
+  // bigblue: {
+  //   color: 'blue',
+  //   fontWeight: 'bold',
+  //   fontSize: 30,
+  // },
+  // red: {
+  //   color: 'red',
+  // },
 
+  // container: {
+  //  flex: 1,
+  //  justifyContent: 'center',
+  // },
+  // buttonContainer: {
+  //   margin: 20
+  // },
+  // alternativeLayoutButtonContainer: {
+  //   margin: 20,
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-between'
+  // }
   container: {
    flex: 1,
-   justifyContent: 'center',
+   paddingTop: 22
   },
-  buttonContainer: {
-    margin: 20
+  sectionHeader: {
+    paddingTop: 2,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 2,
+    fontSize: 14,
+    fontWeight: 'bold',
+    backgroundColor: 'rgba(247,247,247,1.0)',
   },
-  alternativeLayoutButtonContainer: {
-    margin: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  }
-
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
 });
 
 AppRegistry.registerComponent('RNTest', () => RNTest);
