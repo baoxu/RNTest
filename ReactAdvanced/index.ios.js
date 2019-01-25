@@ -13,7 +13,8 @@ import {
   View,
   Platform,
   Button,
-  NavigatorIOS
+  NavigatorIOS,
+  Image,
 } from 'react-native';
 
 export default class ReactAdvanced extends Component {
@@ -41,13 +42,71 @@ export default class ReactAdvanced extends Component {
      你可以直接调用此对象(this.props.navigator)的push和pop方法。
     */
 
-      <NavigatorIOS
-        initialRoute={{
-          component: MyScene,
-          title: "My Initial Scene",
-          passProps: { index: 1 }
+      // <NavigatorIOS
+      //   initialRoute={{
+      //     component: MyScene,
+      //     title: "My Initial Scene",
+      //     passProps: { index: 1 }
+      //   }}
+      //   style={{ flex: 1 }} />
+
+/* 2、图片*/
+      // 静态图片
+      // var icon = this.props.active
+      //     ? require('./my-icon-active.png')
+      //     : require('./my-icon-inactive.png');
+      // <Image source={icon} />;
+
+      // <Image source={{uri: 'app_icon'}} style={{width: 40, height: 40}} />
+
+
+      // 网络图片
+      // 这些时候，与静态资源不同的是，你需要手动指定图片的尺寸
+      // <Image source={{uri: 'https://mobike.com/cn/logo.png'}}
+      //        style={{width: 400, height: 400}} />
+
+      // 你可以在 Image 组件的 source 属性中指定一些请求参数
+      // <Image
+      //   source={{
+      //     uri: 'https://facebook.github.io/react/logo-og.png',
+      //     method: 'POST',
+      //     headers: {
+      //       Pragma: 'no-cache',
+      //     },
+      //     body: 'Your Body goes here',
+      //   }}
+      //   style={{width: 400, height: 400}}/>
+
+      // Uri 数据图片
+      // 请记得指定宽高！
+      // <Image
+      //   style={{
+      //     width: 51,
+      //     height: 51,
+      //     resizeMode: 'contain',
+      //     flex: 1,
+      //     flexDirection: 'column',
+      //     justifyContent: 'center',
+      //     alignItems: 'center',
+      //   }}
+      //   source={{
+      //     uri:
+      //       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==',
+      //   }}/>
+
+      // 缓存控制（仅 iOS）
+      /*
+        default: 使用原生平台默认策略。
+        reload: URL 的数据将从原始地址加载。不使用现有的缓存数据。
+        force-cache: 现有的缓存数据将用于满足请求，忽略其期限或到期日。如果缓存中没有对应请求的数据，则从原始地址加载。
+        only-if-cached: 现有的缓存数据将用于满足请求，忽略其期限或到期日。如果缓存中没有对应请求的数据，则不尝试从原始地址加载，并且认为请求是失败的。
+      */
+      <Image
+        source={{
+          uri: 'https://mobike.com/cn/logo.png',
+          cache: 'only-if-cached',
         }}
-        style={{ flex: 1 }} />
+        style={{width: 400, height: 400}}/>
 
     );
   }
