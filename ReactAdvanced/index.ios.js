@@ -78,12 +78,11 @@ class MyScene extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.buttonContainer}>
         <Text>Current Scene: {this.props.title}</Text>
         <Button
           onPress={this._onForward}
-          title="Tap me to load the next scene"
-        />
+          title="Tap me to load the next scene" />
       </View>
     );
   }
@@ -114,6 +113,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    backgroundColor: '#F1FCFF',
   },
   welcome: {
     fontSize: 20,
