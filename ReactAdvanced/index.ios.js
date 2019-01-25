@@ -9,10 +9,12 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Platform
 } from 'react-native';
 
 export default class ReactAdvanced extends Component {
+
   render() {
     return (
       <View style={styles.container}>
@@ -31,9 +33,28 @@ export default class ReactAdvanced extends Component {
   }
 }
 
+const majorVersionIOS = parseInt(Platform.Version, 10);
+if (majorVersionIOS <= 9) {
+  console.log("Work around a change in behavior");
+}
+      
+
 const styles = StyleSheet.create({
+  height: Platform.OS === "ios" ? 200 : 100,
+
   container: {
     flex: 1,
+
+    ...Platform.select({
+      ios: {
+        backgroundColor: '#b1f1f1',
+      },
+      android: {
+        backgroundColor: '#f4f4f4',
+      }
+    }),
+ 
+
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
