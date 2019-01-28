@@ -191,18 +191,39 @@ export default class ReactAdvanced extends Component {
 
 /* 4、无障碍功能*/
       // https://reactnative.cn/docs/accessibility/
-    <TouchableOpacity
-      accessible={true}
-      accessibilityLabel="返回"
-      accessibilityHint="返回到上一个页面"
-      onPress={this._onPress}>
-      <View style={styles.button}>
-        <Text style={styles.buttonText}>Back</Text>
+      // <TouchableOpacity
+      //   accessible={true}
+      //   accessibilityLabel="返回"
+      //   accessibilityHint="返回到上一个页面"
+      //   onPress={this._onPress}>
+      //   <View style={styles.button}>
+      //     <Text style={styles.buttonText}>Back</Text>
+      //   </View>
+      // </TouchableOpacity>
+
+/* 5、改进用户体验*/
+
+/* 6、定时器*/
+      <View style={styles.container}>
+        <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
       </View>
-    </TouchableOpacity>
 
     );
   }
+      // 在unmount组件时清除（clearTimeout/clearInterval）所有用到的定时器
+    componentDidMount() {
+      this.timer = setTimeout(() => {
+        this._onPress();
+      }, 500);
+    }
+    componentWillUnmount() {
+      // 请注意Un"m"ount的m是小写
+
+      // 如果存在this.timer，则使用clearTimeout清空。
+      // 如果你使用多个timer，那么用多个变量，或者用个数组来保存引用，然后逐个clear
+      this.timer && clearTimeout(this.timer);
+    }
+
 }
 
 class FadeInView extends Component {
