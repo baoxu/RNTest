@@ -213,7 +213,19 @@ export default class ReactAdvanced extends Component {
       // 在unmount组件时清除（clearTimeout/clearInterval）所有用到的定时器
     componentDidMount() {
       this.timer = setTimeout(() => {
-        this._onPress();
+        // this._onPress();
+/* 7、调试*/
+// https://reactnative.cn/docs/debugging/
+        // 红屏错误
+        // console.error();
+        // 黄屏警告
+        // console.warn('YellowBox is disabled.');
+        // 关闭警告⚠️
+        // console.disableYellowBox = true;
+        // YellowBox.ignoreWarnings(['Warning: ...']);
+        // 在 iOS 模拟器的菜单中选择Debug → Open System Log...
+        console.log("把一个定时器的引用挂在this上");
+
       }, 500);
     }
     componentWillUnmount() {
