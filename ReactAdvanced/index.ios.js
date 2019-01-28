@@ -15,9 +15,30 @@ import {
   Button,
   NavigatorIOS,
   Image,
+  Animated,
+  LayoutAnimation,
+  NativeModules,
+  TouchableOpacity,
+
 } from 'react-native';
 
+const { UIManager } = NativeModules;
+UIManager.setLayoutAnimationEnabledExperimental &&
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+
 export default class ReactAdvanced extends Component {
+
+  state = {
+    w: 100,
+    h: 100,
+  };
+
+  _onPress = () => {
+    // Animate the update
+    LayoutAnimation.spring();
+    this.setState({w: this.state.w + 15, h: this.state.h + 15})
+  }
+
 
   render() {
     return (
@@ -101,15 +122,108 @@ export default class ReactAdvanced extends Component {
         force-cache: 现有的缓存数据将用于满足请求，忽略其期限或到期日。如果缓存中没有对应请求的数据，则从原始地址加载。
         only-if-cached: 现有的缓存数据将用于满足请求，忽略其期限或到期日。如果缓存中没有对应请求的数据，则不尝试从原始地址加载，并且认为请求是失败的。
       */
-      <Image
-        source={{
-          uri: 'https://mobike.com/cn/logo.png',
-          cache: 'only-if-cached',
-        }}
-        style={{width: 400, height: 400}}/>
+      // <Image
+      //   source={{
+      //     uri: 'https://mobike.com/cn/logo.png',
+      //     cache: 'only-if-cached',
+      //   }}
+      //   style={{width: 400, height: 400}}/>
+/* 3、动画*/
+      // Animated
+      // <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      //   <FadeInView style={{width: 250, height: 50, backgroundColor: 'powderblue'}}>
+      //     <Text style={{fontSize: 28, textAlign: 'center', margin: 10}}>Fading in</Text>
+      //   </FadeInView>
+      // </View>
+      // https://reactnative.cn/docs/animations/
+      // 配置动画
+      // Animated.timing(this.state.xPosition, {
+      //   toValue: 100,
+      //   easing: Easing.back(),
+      //   duration: 2000
+      // }).start();
+      
+      // 组合动画
+      // Animated.sequence([
+      //   // decay, then spring to start and twirl
+      //   Animated.decay(position, {
+      //     // coast to a stop
+      //     velocity: { x: gestureState.vx, y: gestureState.vy }, // velocity from gesture release
+      //     deceleration: 0.997
+      //   }),
+      //   Animated.parallel([
+      //     // after decay, in parallel:
+      //     Animated.spring(position, {
+      //       toValue: { x: 0, y: 0 } // return to start
+      //     }),
+      //     Animated.timing(twirl, {
+      //       // and twirl
+      //       toValue: 360
+      //     })
+      //   ])
+      // ]).start(); // start the sequence group
+
+      // 合成动画值
+      // const a = new Animated.Value(1);
+      // const b = Animated.divide(1, a);
+
+      // Animated.spring(a, {
+      //   toValue: 2
+      // }).start();
+      // 插值
+      // 跟踪动态值
+      // 跟踪手势
+      // 响应当前的动画值
+      // 启用原生动画驱动
+
+      // LayoutAnimation API
+
+      <View style={styles.container}>
+        <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
+        <TouchableOpacity onPress={this._onPress}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Press me!</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
 
     );
   }
+}
+
+class FadeInView extends Component {
+
+  state = {
+    fadeAnim: new Animated.Value(0), // 透明度初始值设为0
+  }
+
+  componentDidMount() {
+    Animated.timing(                // 随时间变化而执行动画
+      this.state.fadeAnim,          // 动画中的变量值
+      {
+        toValue: 1,                 // 透明度最终变为1，即完全不透明
+        duration: 10000,            // 让动画持续一段时间
+      }
+
+    ).start();                      // 开始执行动画
+  }
+
+  render() {
+    let { fadeAnim } = this.state;
+    return (
+      <Animated.View                // 使用专门的可动画化的View组件
+        style={{
+          ...this.props.style,
+          opacity: fadeAnim,        // 将透明度指定为动画变量值
+
+        }}
+      >
+        {this.props.children}
+      </Animated.View>
+
+    )
+  }
+
 }
 
 
@@ -156,23 +270,46 @@ if (majorVersionIOS <= 9) {
 const styles = StyleSheet.create({
   height: Platform.OS === "ios" ? 200 : 100,
 
-  container: {
-    flex: 1,
+  // container: {
+  //   flex: 1,
 
-    ...Platform.select({
-      ios: {
-        backgroundColor: '#b1f1f1',
-      },
-      android: {
-        backgroundColor: '#f4f4f4',
-      }
-    }),
+  //   ...Platform.select({
+  //     ios: {
+  //       backgroundColor: '#b1f1f1',
+  //     },
+  //     android: {
+  //       backgroundColor: '#f4f4f4',
+  //     }
+  //   }),
  
 
-    justifyContent: 'center',
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   backgroundColor: '#F5FCFF',
+  // },
+
+  container: {
+    flex: 1,
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: 'center',
   },
+  box: {
+    width: 200,
+    height: 200,
+    backgroundColor: 'red',
+  },
+  button: {
+    backgroundColor: 'black',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    marginTop: 15,
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  
+
   buttonContainer: {
     flex: 1,
     flexDirection: 'column',
