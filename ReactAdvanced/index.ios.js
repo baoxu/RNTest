@@ -235,8 +235,17 @@ export default class ReactAdvanced extends Component {
       // 如果你使用多个timer，那么用多个变量，或者用个数组来保存引用，然后逐个clear
       this.timer && clearTimeout(this.timer);
     }
+/* 8、性能*/
+      // https://reactnative.cn/docs/performance/
+
+/* 9、手势响应系统*/
+      // https://reactnative.cn/docs/gesture-responder-system/
+
+/* 10、JavaScript环境*/
+      // https://reactnative.cn/docs/javascript-environment/
 
 }
+
 
 class FadeInView extends Component {
 
