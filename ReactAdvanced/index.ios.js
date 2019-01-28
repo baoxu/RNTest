@@ -20,6 +20,9 @@ import {
   NativeModules,
   TouchableOpacity,
 
+  findNodeHandle,
+  TouchableWithoutFeedback
+
 } from 'react-native';
 
 const { UIManager } = NativeModules;
@@ -38,7 +41,6 @@ export default class ReactAdvanced extends Component {
     LayoutAnimation.spring();
     this.setState({w: this.state.w + 15, h: this.state.h + 15})
   }
-
 
   render() {
     return (
@@ -178,14 +180,26 @@ export default class ReactAdvanced extends Component {
 
       // LayoutAnimation API
 
-      <View style={styles.container}>
-        <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
-        <TouchableOpacity onPress={this._onPress}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Press me!</Text>
-          </View>
-        </TouchableOpacity>
+      // <View style={styles.container}>
+      //   <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
+      //   <TouchableOpacity onPress={this._onPress}>
+      //     <View style={styles.button}>
+      //       <Text style={styles.buttonText}>Press me!</Text>
+      //     </View>
+      //   </TouchableOpacity>
+      // </View>
+
+/* 4、无障碍功能*/
+      // https://reactnative.cn/docs/accessibility/
+    <TouchableOpacity
+      accessible={true}
+      accessibilityLabel="返回"
+      accessibilityHint="返回到上一个页面"
+      onPress={this._onPress}>
+      <View style={styles.button}>
+        <Text style={styles.buttonText}>Back</Text>
       </View>
+    </TouchableOpacity>
 
     );
   }
@@ -308,7 +322,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
   },
-  
+
 
   buttonContainer: {
     flex: 1,
