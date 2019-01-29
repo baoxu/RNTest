@@ -42,6 +42,11 @@ export default class ReactAdvanced extends Component {
     this.setState({w: this.state.w + 15, h: this.state.h + 15})
   }
 
+  constructor(props) {
+    super(props);
+    this.state = { myButtonOpacity: 1, };
+  }
+
   render() {
     return (
       // <View style={styles.container}>
@@ -204,9 +209,25 @@ export default class ReactAdvanced extends Component {
 /* 5、改进用户体验*/
 
 /* 6、定时器*/
-      <View style={styles.container}>
-        <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
-      </View>
+      // <View style={styles.container}>
+      //   <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
+      // </View>
+
+/* 11、直接操作*/
+    // <TouchableOpacity onPress={this._handlePress}>
+    //   <View style={styles.button}>
+    //     <Text style={styles.buttonText}>Press me!</Text>
+    //   </View>
+    // </TouchableOpacity>
+    // <TouchableOpacity onPress={() => this.setState({myButtonOpacity: 0.5})}
+    //                   onPressOut={() => this.setState({myButtonOpacity: 1})}>
+    //   <View style={[styles.button, {opacity: this.state.myButtonOpacity}]}>
+    //     <Text>Press me!</Text>
+    //   </View>
+    // </TouchableOpacity>
+      <TouchableOpacity>
+        <MyButton label="Press me!" />
+      </TouchableOpacity>
 
     );
   }
@@ -244,6 +265,21 @@ export default class ReactAdvanced extends Component {
 /* 10、JavaScript环境*/
       // https://reactnative.cn/docs/javascript-environment/
 
+}
+
+
+class MyButton extends Component {
+  setNativeProps = (nativeProps) => {
+    this._root.setNativeProps(nativeProps);
+  }
+
+  render() {
+    return (
+      <View ref={component => this._root = component} {...this.props}>
+        <Text>{this.props.label}</Text>
+      </View>
+    )
+  }
 }
 
 
