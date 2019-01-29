@@ -214,20 +214,25 @@ export default class ReactAdvanced extends Component {
       // </View>
 
 /* 11、直接操作*/
-    // <TouchableOpacity onPress={this._handlePress}>
-    //   <View style={styles.button}>
-    //     <Text style={styles.buttonText}>Press me!</Text>
-    //   </View>
-    // </TouchableOpacity>
-    // <TouchableOpacity onPress={() => this.setState({myButtonOpacity: 0.5})}
-    //                   onPressOut={() => this.setState({myButtonOpacity: 1})}>
-    //   <View style={[styles.button, {opacity: this.state.myButtonOpacity}]}>
-    //     <Text>Press me!</Text>
-    //   </View>
-    // </TouchableOpacity>
-      <TouchableOpacity>
-        <MyButton label="Press me!" />
-      </TouchableOpacity>
+      // <TouchableOpacity onPress={this._handlePress}>
+      //   <View style={styles.button}>
+      //     <Text style={styles.buttonText}>Press me!</Text>
+      //   </View>
+      // </TouchableOpacity>
+      // <TouchableOpacity onPress={() => this.setState({myButtonOpacity: 0.5})}
+      //                   onPressOut={() => this.setState({myButtonOpacity: 1})}>
+      //   <View style={[styles.button, {opacity: this.state.myButtonOpacity}]}>
+      //     <Text>Press me!</Text>
+      //   </View>
+      // </TouchableOpacity>
+      // <TouchableOpacity>
+      //   <MyButton label="Press me!" />
+      // </TouchableOpacity>
+
+/* 12、颜色*/
+    // https://reactnative.cn/docs/colors/
+/* 13、集成到现有原生应用*/
+
 
     );
   }
