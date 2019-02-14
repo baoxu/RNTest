@@ -14,44 +14,18 @@ import {
   NativeEventEmitter
 } from 'react-native';
 
-// import MapView from './MapView.js';
-
-
-const { CalendarManager } = NativeModules;
-
-const calendarManagerEmitter = new NativeEventEmitter(CalendarManager);
-
-const subscription = calendarManagerEmitter.addListener(
-  'EventReminder',
-  (reminder) => console.log(reminder.name)
-);
-
-// 别忘了取消订阅，通常在componentWillUnmount生命周期方法中实现。
-subscription.remove();
+// MapView-对应->./MapView.js-对应->RNTMap-对应->RNTMapManager iOS类名
+import MapView from './MapView.js';
 
 export default class RNInteraction extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+  return (
+    // 页面 全屏展示Map
+    <MapView style={{ flex: 1 }} />
+    // <MapView zoomEnabled={false} style={{flex: 1}} />;
+
+
     );
-
-  // return (
-  //   <MapView style={{ flex: 1 }} />
-  //   // <MapView zoomEnabled={false} style={{flex: 1}} />;
-
-
-  //   );
 
   }
 }
