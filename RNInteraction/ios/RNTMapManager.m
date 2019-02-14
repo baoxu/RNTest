@@ -18,7 +18,8 @@
 @implementation RNTMapManager
 
 RCT_EXPORT_MODULE()
-//RCT_EXPORT_VIEW_PROPERTY(zoomEnabled, BOOL)
+// 属性
+RCT_EXPORT_VIEW_PROPERTY(zoomEnabled, BOOL)
 
 - (UIView *)view
 {

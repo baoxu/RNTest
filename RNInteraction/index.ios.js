@@ -21,8 +21,9 @@ export default class RNInteraction extends Component {
   render() {
   return (
     // 页面 全屏展示Map
-    <MapView style={{ flex: 1 }} />
-    // <MapView zoomEnabled={false} style={{flex: 1}} />;
+    // <MapView style={{ flex: 1 }} />
+    // 禁用捏放操作，我们只需要在 JS 里设置对应的属性：
+    <MapView zoomEnabled={false} style={{flex: 1}} />
 
 
     );
