@@ -38,6 +38,7 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		F34182C62216C68400E45E7E /* RNTMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F34182C32216C68300E45E7E /* RNTMapManager.m */; };
 		F34182C72216C68400E45E7E /* CalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F34182C42216C68300E45E7E /* CalendarManager.m */; };
+		F34182F1221858EA00E45E7E /* RCTConvert+Mapkit.m in Sources */ = {isa = PBXBuildFile; fileRef = F34182D6221858EA00E45E7E /* RCTConvert+Mapkit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -261,6 +262,8 @@
 		F34182C32216C68300E45E7E /* RNTMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTMapManager.m; sourceTree = "<group>"; };
 		F34182C42216C68300E45E7E /* CalendarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarManager.m; sourceTree = "<group>"; };
 		F34182C52216C68400E45E7E /* RNTMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTMapManager.h; sourceTree = "<group>"; };
+		F34182D6221858EA00E45E7E /* RCTConvert+Mapkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RCTConvert+Mapkit.m"; sourceTree = "<group>"; };
+		F34182F0221858EA00E45E7E /* RCTConvert+Mapkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RCTConvert+Mapkit.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,6 +405,8 @@
 				F34182C42216C68300E45E7E /* CalendarManager.m */,
 				F34182C52216C68400E45E7E /* RNTMapManager.h */,
 				F34182C32216C68300E45E7E /* RNTMapManager.m */,
+				F34182F0221858EA00E45E7E /* RCTConvert+Mapkit.h */,
+				F34182D6221858EA00E45E7E /* RCTConvert+Mapkit.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
@@ -918,6 +923,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				F34182C72216C68400E45E7E /* CalendarManager.m in Sources */,
 				F34182C62216C68400E45E7E /* RNTMapManager.m in Sources */,
+				F34182F1221858EA00E45E7E /* RCTConvert+Mapkit.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

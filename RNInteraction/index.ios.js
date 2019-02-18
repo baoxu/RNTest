@@ -28,6 +28,19 @@ export default class RNInteraction extends Component {
 
     );
 
+  // var region = {
+  //   latitude: 37.48,
+  //   longitude: -122.16,
+  //   latitudeDelta: 0.1,
+  //   longitudeDelta: 0.1,
+  // };
+  // return (
+  //   <MapView
+  //     region={region}
+  //     zoomEnabled={false}
+  //     style={{ flex: 1 }} />
+  // );
+
   }
 }
 
