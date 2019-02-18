@@ -91,7 +91,10 @@ AppRegistry.registerComponent('RNInteraction', () => RNInteraction);
   https://reactnative.cn/docs/linking-libraries-ios/
 */
 
-
+/**
+  在iOS模拟器上运行
+  https://reactnative.cn/docs/running-on-simulator-ios/
+*/
 
 
 
