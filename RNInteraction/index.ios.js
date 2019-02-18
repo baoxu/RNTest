@@ -96,5 +96,9 @@ AppRegistry.registerComponent('RNInteraction', () => RNInteraction);
   https://reactnative.cn/docs/running-on-simulator-ios/
 */
 
+/**
+  iOS应用扩展
+  https://reactnative.cn/docs/app-extensions/
+*/
 
 
