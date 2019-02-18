@@ -18,15 +18,15 @@ import {
 import MapView from './MapView.js';
 
 export default class RNInteraction extends Component {
-  render() {
-  return (
-    // 页面 全屏展示Map
-    // <MapView style={{ flex: 1 }} />
-    // 禁用捏放操作，我们只需要在 JS 里设置对应的属性：
-    <MapView zoomEnabled={false} style={{flex: 1}} />
+  // render() {
+  // return (
+  //   // 页面 全屏展示Map
+  //   // <MapView style={{ flex: 1 }} />
+  //   // 禁用捏放操作，我们只需要在 JS 里设置对应的属性：
+  //   <MapView zoomEnabled={false} style={{flex: 1}} />
 
 
-    );
+  //   );
 
   // var region = {
   //   latitude: 37.48,
@@ -41,7 +41,7 @@ export default class RNInteraction extends Component {
   //     style={{ flex: 1 }} />
   // );
 
-  }
+  // }
 
   onRegionChange(event) {
     // Do stuff with event.region.latitude, etc.
