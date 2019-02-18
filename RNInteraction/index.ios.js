@@ -85,3 +85,13 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('RNInteraction', () => RNInteraction);
+
+/**
+  链接原生库
+  https://reactnative.cn/docs/linking-libraries-ios/
+*/
+
+
+
+
+
