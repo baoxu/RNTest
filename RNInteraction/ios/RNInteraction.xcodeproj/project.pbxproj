@@ -39,6 +39,7 @@
 		F34182C62216C68400E45E7E /* RNTMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F34182C32216C68300E45E7E /* RNTMapManager.m */; };
 		F34182C72216C68400E45E7E /* CalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F34182C42216C68300E45E7E /* CalendarManager.m */; };
 		F34182F1221858EA00E45E7E /* RCTConvert+Mapkit.m in Sources */ = {isa = PBXBuildFile; fileRef = F34182D6221858EA00E45E7E /* RCTConvert+Mapkit.m */; };
+		F341833D221AA31400E45E7E /* RNTMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = F341833C221AA31400E45E7E /* RNTMapView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -264,6 +265,8 @@
 		F34182C52216C68400E45E7E /* RNTMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTMapManager.h; sourceTree = "<group>"; };
 		F34182D6221858EA00E45E7E /* RCTConvert+Mapkit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RCTConvert+Mapkit.m"; sourceTree = "<group>"; };
 		F34182F0221858EA00E45E7E /* RCTConvert+Mapkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RCTConvert+Mapkit.h"; sourceTree = "<group>"; };
+		F341833B221AA31400E45E7E /* RNTMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTMapView.h; sourceTree = "<group>"; };
+		F341833C221AA31400E45E7E /* RNTMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMapView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +408,8 @@
 				F34182C42216C68300E45E7E /* CalendarManager.m */,
 				F34182C52216C68400E45E7E /* RNTMapManager.h */,
 				F34182C32216C68300E45E7E /* RNTMapManager.m */,
+				F341833B221AA31400E45E7E /* RNTMapView.h */,
+				F341833C221AA31400E45E7E /* RNTMapView.m */,
 				F34182F0221858EA00E45E7E /* RCTConvert+Mapkit.h */,
 				F34182D6221858EA00E45E7E /* RCTConvert+Mapkit.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -922,6 +927,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				F34182C72216C68400E45E7E /* CalendarManager.m in Sources */,
+				F341833D221AA31400E45E7E /* RNTMapView.m in Sources */,
 				F34182C62216C68400E45E7E /* RNTMapManager.m in Sources */,
 				F34182F1221858EA00E45E7E /* RCTConvert+Mapkit.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,

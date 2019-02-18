@@ -9,12 +9,20 @@
 #import "RNTMapManager.h"
 #import <MapKit/MapKit.h>
 #import "RCTConvert+Mapkit.h"
-
+#import "RNTMapView.h"
 /**
 首先创建一个RCTViewManager的子类。
 添加RCT_EXPORT_MODULE()宏标记。
 实现-(UIView *)view方法。
 */
+
+
+/**
+ 需要注意的是，所有 RCTBubblingEventBlock 必须以 on 开头。然后在 RNTMapManager上声明一个事件处理函数属性，将其作为所暴露出来的所有视图的委托，并调用本地视图的事件处理将事件转发至JS。
+ */
+@interface RNTMapManager ()<MKMapViewDelegate>
+
+@end
 
 @implementation RNTMapManager
 
@@ -34,7 +42,33 @@ RCT_CUSTOM_VIEW_PROPERTY(region, MKCoordinateRegion, MKMapView)
 
 - (UIView *)view
 {
-  return [[MKMapView alloc] init];
+  RNTMapView *map = [RNTMapView new];
+  map.delegate = self;
+  return map;
 }
+
+
+#pragma mark MKMapViewDelegate
+
+- (void)mapView:(RNTMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+  if (!mapView.onRegionChange) {
+    return;
+  }
+  
+  MKCoordinateRegion region = mapView.region;
+  mapView.onRegionChange(@{
+                           @"region": @{
+                               @"latitude": @(region.center.latitude),
+                               @"longitude": @(region.center.longitude),
+                               @"latitudeDelta": @(region.span.latitudeDelta),
+                               @"longitudeDelta": @(region.span.longitudeDelta),
+                               }
+                           });
+}
+
+/**
+ 在委托方法-mapView:regionDidChangeAnimated:中，根据对应的视图调用事件处理函数并传递区域数据。调用onRegionChange事件会触发 JavaScript 端的同名回调函数。这个回调会传递原生事件对象，然后我们通常都会在封装组件里来处理这个对象，以使 API 更简明：
+ */
 
 @end
