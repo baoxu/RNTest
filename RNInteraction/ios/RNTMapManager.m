@@ -10,6 +10,13 @@
 #import <MapKit/MapKit.h>
 #import "RCTConvert+Mapkit.h"
 #import "RNTMapView.h"
+
+#import <React/RCTRootView.h>
+#import <React/RCTBridge.h>
+#import <React/RCTRootViewDelegate.h>
+#import <React/RCTViewManager.h>
+#import "AppDelegate.h"
+
 /**
 首先创建一个RCTViewManager的子类。
 添加RCT_EXPORT_MODULE()宏标记。
@@ -44,6 +51,18 @@ RCT_CUSTOM_VIEW_PROPERTY(region, MKCoordinateRegion, MKMapView)
 {
   RNTMapView *map = [RNTMapView new];
   map.delegate = self;
+  
+  NSArray *imageList = @[@"http://foo.com/bar1.png",
+                         @"http://foo.com/bar2.png"];
+  
+  NSDictionary *props = @{@"images" : imageList};
+  
+  AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:appDelegate.bridge
+                                                   moduleName:@"ImageBrowserApp"
+                                            initialProperties:props];
+  
   return map;
 }
 

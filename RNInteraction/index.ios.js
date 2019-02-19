@@ -11,7 +11,8 @@ import {
   Text,
   View,
   NativeModules,
-  NativeEventEmitter
+  NativeEventEmitter,
+  Image
 } from 'react-native';
 
 // MapView-对应->./MapView.js-对应->RNTMap-对应->RNTMapManager iOS类名
@@ -43,26 +44,45 @@ export default class RNInteraction extends Component {
 
   // }
 
-  onRegionChange(event) {
-    // Do stuff with event.region.latitude, etc.
-    console.warn(event.region.latitude);
-  }
+  // onRegionChange(event) {
+  //   // Do stuff with event.region.latitude, etc.
+  //   console.warn(event.region.latitude);
+  // }
 
-  render() {
-    var region = {
-      latitude: 37.48,
-      longitude: -122.16,
-      latitudeDelta: 0.1,
-      longitudeDelta: 0.1,
-    };
+  // render() {
+  //   var region = {
+  //     latitude: 37.48,
+  //     longitude: -122.16,
+  //     latitudeDelta: 0.1,
+  //     longitudeDelta: 0.1,
+  //   };
+  //   return (
+  //     <MapView
+  //       region={region}
+  //       zoomEnabled={false}
+  //       style={{ flex: 1 }}
+  //       onRegionChange={this.onRegionChange} />
+  //   );
+  // }
+
+
+  /**
+    和原生端通信
+    https://reactnative.cn/docs/communication-ios/
+  */ 
+  renderImage(imgURI) {
     return (
-      <MapView
-        region={region}
-        zoomEnabled={false}
-        style={{ flex: 1 }}
-        onRegionChange={this.onRegionChange} />
+      <Image source={{uri: imgURI}} />
     );
   }
+  render() {
+    return (
+      <View>
+        {this.props.images.map(this.renderImage)}
+      </View>
+    );
+  }
+
 }
 
 const styles = StyleSheet.create({
